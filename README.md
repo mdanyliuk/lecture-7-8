@@ -5,6 +5,6 @@ To run project: <br>
 copy file 'users-list-app.war' from 'target' directory to 'tomcat/webapps' <br>
 run tomcat if not running <br>
 <br>
-Use following credentials for login:
+Use following credentials for login: <br>
 username: `johndoe` <br>
 password: `123` <br>
