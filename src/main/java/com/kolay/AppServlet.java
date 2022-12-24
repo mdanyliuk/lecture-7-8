@@ -2,6 +2,7 @@ package com.kolay;
 
 import com.kolay.model.User;
 import com.kolay.service.UserService;
+import com.kolay.service.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,11 +15,7 @@ import java.util.Optional;
 @WebServlet("/")
 public class AppServlet extends HttpServlet {
 
-    UserService userService;
-
-    public AppServlet() {
-        this.userService = new UserService();
-    }
+    private UserService userService = new UserServiceImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,17 +43,10 @@ public class AppServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = req.getServletPath();
         switch (path) {
-            case "/welcome" :
-                handleWelcome(req, resp);
-                break;
-            case "/users" :
-                handleUsers(req, resp);
-                break;
-            case "/logout" :
-                handleLogout(req, resp);
-                break;
-            default:
-                resp.sendError(404);
+            case "/welcome" -> handleWelcome(req, resp);
+            case "/users" -> handleUsers(req, resp);
+            case "/logout" -> handleLogout(req, resp);
+            default -> resp.sendError(404);
         }
     }
 
